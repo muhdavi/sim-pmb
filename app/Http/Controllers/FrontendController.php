@@ -13,16 +13,16 @@ class FrontendController extends Controller
 
     public function tentang()
     {
-        return view('frontend.index');
+        return view('frontend.tentang');
     }
 
     public function sekolah()
     {
-        return view('frontend.index');
+        return view('frontend.sekolah');
     }
 
     public function kontak()
     {
-        return view('frontend.index');
+        return view('frontend.kontak');
     }
 }
