@@ -7,7 +7,7 @@
     <meta name="descriptison" content="Gaza International Foundation">
     <meta name="keywords" content="gaza, bantuan">
 
-    <title>{{ config('app.name', 'GIF') }} - Gaza International Foundation</title>
+    <title>{{ config('app.name', 'SIMPMB') }} - Sistem Penerimaan Murid Baru</title>
 
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon" type="image/png">
