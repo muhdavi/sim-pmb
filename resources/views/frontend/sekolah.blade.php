@@ -6,10 +6,10 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Daftar Sekolah</h2>
+                    <h2>Sekolah Peserta SIMPMB</h2>
                     <ol>
                         <li><a href="{{ route('frontend.index') }}">Beranda</a></li>
-                        <li>Daftar Sekolah</li>
+                        <li>Sekolah</li>
                     </ol>
                 </div>
 
@@ -27,7 +27,7 @@
                                     <span class="advanced">Akreditasi A</span>
                                 @endif
                                 <h3>Sekolah Menengah Pertama</h3>
-                                <img src="{{ URL::to('assets/img/clients', $sekolah->foto) }}" class="img-fluid" alt="Foto {{ $sekolah->$sekolah }}">
+                                <img src="{{ URL::to('assets/img/clients', $sekolah->foto) }}" class="img-fluid" alt="Foto Sekolah">
                                 <h4>{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</h4>
                                 <p class="mx-4">{{ $sekolah->alamat }}</p>
                                 <div class="btn-wrap">
@@ -37,7 +37,6 @@
                         </div>
                     @endforeach
                 </div>
-
             </div>
         </section><!-- End Pricing Section -->
 

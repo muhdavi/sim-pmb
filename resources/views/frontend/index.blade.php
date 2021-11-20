@@ -80,9 +80,9 @@
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                             <div class="icon-box iconbox-blue">
                                 <div class="client-logo">
-                                    <img src="{{ URL::to('assets/img/clients', $sekolah->foto) }}" class="img-fluid" alt="Foto {{ $sekolah->$sekolah }}">
+                                    <img src="{{ URL::to('assets/img/clients', $sekolah->foto) }}" class="img-fluid" alt="Foto Sekolah">
                                 </div>
-                                <h4><a href="">{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</a></h4>
+                                <h4>{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</h4>
                                 <p class="mx-4">{{ $sekolah->alamat }}</p>
                                 <a href="/daftar/{{ $sekolah->id }}-{{ Str::slug($sekolah->sekolah) }}" class="btn btn-success mt-4">Daftar</a>
                             </div>

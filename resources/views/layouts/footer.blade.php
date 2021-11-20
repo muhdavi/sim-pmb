@@ -5,7 +5,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-4 footer-contact">
-                    <h3><img src="{{ asset('assets/img/logo-simpmb.jpeg') }}" alt="" class="img-fluid"></h3>
+                    <h3>
+                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    </h3>
                     {{--<p>
                         Jl. Banda Aceh - Medan KM 370 Idi Rayeuk Aceh Timur Aceh 24452<br><br>
                         <strong>Phone:</strong> +62 852 3172 9321<br>

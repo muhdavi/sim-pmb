@@ -42,7 +42,7 @@
                                 <div class="col-lg-4 info mt-4 mt-lg-0">
                                     <i class="icofont-phone"></i>
                                     <h4>No HP:</h4>
-                                    <p>+62 853 2958 3423<br>+62 831 7712 4954</p>
+                                    <p>+62 853 3580 0853<br>+62 831 7712 4954</p>
                                 </div>
                             </div>
                         </div>
