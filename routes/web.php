@@ -19,6 +19,8 @@ Route::middleware(['guest'])->group(function (){
         Route::get('tentang', [FrontendController::class, 'tentang'])->name('tentang');
         Route::get('sekolah', [FrontendController::class, 'sekolah'])->name('sekolah');
         Route::get('kontak', [FrontendController::class, 'kontak'])->name('kontak');
+        Route::get('daftar/{sekolah}-{slug}', [FrontendController::class, 'daftar'])->name('daftar');
+        Route::post('store/{sekolah}-{slug}', [FrontendController::class, 'store'])->name('store');
     });
 });
 

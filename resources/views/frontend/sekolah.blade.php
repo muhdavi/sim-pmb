@@ -6,10 +6,10 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Pricing</h2>
+                    <h2>Daftar Sekolah</h2>
                     <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li>Pricing</li>
+                        <li><a href="{{ route('frontend.index') }}">Beranda</a></li>
+                        <li>Daftar Sekolah</li>
                     </ol>
                 </div>
 
@@ -19,28 +19,23 @@
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container" data-aos="fade-up">
-
                 <div class="row">
-
-                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                        <div class="box">
-                            <span class="advanced">Advanced</span>
-                            <h3>Ultimate</h3>
-                            <h4><sup>$</sup>49<span> / month</span></h4>
-                            <img src="{{ asset('assets/img/clients/smpn-1-madat.jpg') }}" class="img-fluid" alt="">
-                            <ul>
-                                <li>Aida dere</li>
-                                <li>Nec feugiat nisl</li>
-                                <li>Nulla at volutpat dola</li>
-                                <li>Pharetra massa</li>
-                                <li>Massa ultricies mi</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Buy Now</a>
+                    @foreach($sekolahs as $sekolah)
+                        <div class="col-lg-4 col-md-6 mt-4 mt-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="box">
+                                @if($sekolah->akreditasi == 'A')
+                                    <span class="advanced">Akreditasi A</span>
+                                @endif
+                                <h3>Sekolah Menengah Pertama</h3>
+                                <img src="{{ URL::to('assets/img/clients', $sekolah->foto) }}" class="img-fluid" alt="Foto {{ $sekolah->$sekolah }}">
+                                <h4>{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</h4>
+                                <p class="mx-4">{{ $sekolah->alamat }}</p>
+                                <div class="btn-wrap">
+                                    <a href="/daftar/{{ $sekolah->id }}-{{ Str::slug($sekolah->sekolah) }}" class="btn-buy">Daftar</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    @endforeach
                 </div>
 
             </div>

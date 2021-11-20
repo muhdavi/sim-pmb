@@ -6,10 +6,10 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>About</h2>
+                    <h2>Tentang Kami</h2>
                     <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li>About</li>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li>Tentang Kami</li>
                     </ol>
                 </div>
 
@@ -22,8 +22,8 @@
 
                 <div class="row content">
                     <div class="col-lg-6" data-aos="fade-right">
-                        <h2>Eum ipsam laborum deleniti velitena</h2>
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+                        <h2>Sistem Informasi Penerimaan Murid Baru (SIMPMB)</h2>
+                        <h3>Tempat penerimaan murid baru berdasarkan peraturan yang berlaku.</h3>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
                         <p>

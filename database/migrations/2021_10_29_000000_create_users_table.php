@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->foreignId('sekolah_id')->nullable()->constrained('sekolahs')->onUpdate('cascade');
+            $table->enum('as', ['admin', 'dinas', 'sekolah', 'wali', 'murid'])->default('murid');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

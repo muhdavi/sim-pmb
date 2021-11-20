@@ -6,13 +6,13 @@
             <div class="carousel-inner" role="listbox">
 
                 <!-- Slide -->
-                <div class="carousel-item active" style="background-image: url({{ asset('assets/img/slide/slide-1-sekolah.png') }});"></div>
+                <div class="carousel-item active" style="background-image: url({{ asset('assets/img/slide/slide-2-sekolah.png') }});"></div>
 
                 <!-- Slide 2 -->
-                <div class="carousel-item" style="background-image: url({{ asset('assets/img/slide/slide-2-sekolah.png') }});"></div>
+                <div class="carousel-item" style="background-image: url({{ asset('assets/img/slide/slide-3-sekolah.png') }});"></div>
 
                 <!-- Slide 3 -->
-                <div class="carousel-item" style="background-image: url({{ asset('assets/img/slide/slide-3-sekolah.png') }});"></div>
+                <div class="carousel-item" style="background-image: url({{ asset('assets/img/slide/slide-1-sekolah.png') }});"></div>
 
             </div>
 
@@ -59,7 +59,6 @@
                         <p>Sistem Informasi Penerimaan Murid Baru (SIMPMB) juga telah menjalin kerjasama dengan berbagai instansi pemerintahan, instansi swasta, lembaga pendidikan, universitas,
                             sekolah serta lembaga-lembaga yang bergerak dibidang edukasi dan sosial.
                         </p>
-
                         {{--                        <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>--}}
                     </div>
                 </div>
@@ -77,72 +76,18 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box iconbox-blue">
-                            <div class="client-logo">
-                                <img src="{{ asset('assets/img/clients/smpn-1-simpangulim.jpg') }}" class="img-fluid" alt="">
+                    @foreach($sekolahs as $sekolah)
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="icon-box iconbox-blue">
+                                <div class="client-logo">
+                                    <img src="{{ URL::to('assets/img/clients', $sekolah->foto) }}" class="img-fluid" alt="Foto {{ $sekolah->$sekolah }}">
+                                </div>
+                                <h4><a href="">{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</a></h4>
+                                <p class="mx-4">{{ $sekolah->alamat }}</p>
+                                <a href="/daftar/{{ $sekolah->id }}-{{ Str::slug($sekolah->sekolah) }}" class="btn btn-success mt-4">Daftar</a>
                             </div>
-                            <h4><a href="">SMPN 1 SIMPANG ULIM (10101915)</a></h4>
-                            <p class="mx-4">Jalan Banda Aceh Medan Km. 340 Simpang Ulim, Gampong Blang, Kec. Simpang Ulim, Kab. Aceh Timur Prov. Aceh</p>
-                            <a href="#" class="btn btn-success mt-4">Daftar</a>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box iconbox-orange ">
-                            <div class="client-logo">
-                                <img src="{{ asset('assets/img/clients/smpn-2-simpangulim.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <h4><a href="">SMPN 2 SIMPANG ULIM (10110450)</a></h4>
-                            <p class="mx-4">Jln. Banda Aceh - Medan, Matang Kumbang, Kec. Simpang Ulim, Kab. Aceh Timur Prov. Aceh</p>
-                            <a href="#" class="btn btn-success mt-4">Daftar</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="icon-box iconbox-pink">
-                            <div class="client-logo">
-                                <img src="{{ asset('assets/img/clients/disdikbud.jpeg') }}" class="img-fluid" alt="">
-                            </div>
-                            <h4><a href="">SMPN SATU ATAP SDN KUALA SIMPANG ULIM (69814192)</a></h4>
-                            <p class="mx-4">JL. KUALA SIMPANG ULIM, Kuala Simpang Ulim, Kec. Simpang Ulim, Kab. Aceh Timur Prov. Aceh</p>
-                            <a href="#" class="btn btn-success mt-4">Daftar</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box iconbox-yellow">
-                            <div class="client-logo">
-                                <img src="{{ asset('assets/img/clients/smpn-1-madat.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <h4><a href="">SMPN 1 MADAT (10101922)</a></h4>
-                            <p class="mx-4">Jalan Pang Burek - Madat, Madat, Kec. Madat, Kab. Aceh Timur Prov. Aceh</p>
-                            <a href="#" class="btn btn-success mt-4">Daftar</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box iconbox-red">
-                            <div class="client-logo">
-                                <img src="{{ asset('assets/img/clients/smpn-2-madat.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <h4><a href="">SMPN 2 MADAT (10110382)</a></h4>
-                            <p class="mx-4">Jalan Lueng Sa Km. 4 No. 1 Kode Pos 24458, Blang Awe, Kec. Madat, Kab. Aceh Timur Prov. Aceh</p>
-                            <a href="#" class="btn btn-success mt-4">Daftar</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="icon-box iconbox-teal">
-                            <div class="client-logo">
-                                <img src="{{ asset('assets/img/clients/smpn-3-madat.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <h4><a href="">SMPN 3 MADAT (10111452)</a></h4>
-                            <p class="mx-4">Jl.tanjong minje-Mns Asan Km.8 , Pante Bayam, Kec. Madat, Kab. Aceh Timur Prov. Aceh</p>
-                            <a href="#" class="btn btn-success mt-4">Daftar</a>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
 
             </div>
