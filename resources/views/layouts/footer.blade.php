@@ -26,9 +26,10 @@
 
                 <div class="col-lg-4 col-md-4 footer-newsletter">
                     <h4>Gabung dengan Newsletter Kami</h4>
-                    <p>Info terbaru dari SIMPMB akan dikirim via email terdaftar.</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                    <p>Dengan mengisi email dibawah ini, Anda telah berlangganan Newsletter dari SIMPMB.</p>
+                    <form action="#" method="get">
+                        <input type="email" name="email">
+                        <input type="submit" value="Subscribe">
                     </form>
                 </div>
 

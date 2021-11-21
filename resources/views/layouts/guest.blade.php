@@ -25,9 +25,35 @@
     <link href="{{ asset('assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <style type="text/css">
+        .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+            width: 50% !important;
+        }
+    </style>
+    <script>
+        $( function() {
+            $( "#tanggal_lahir" ).datepicker({
+                changeMonth: false,
+                changeYear: false,
+                dateFormat: 'yy-mm-dd',
+            });
+        });
+    </script>
 </head>
 <body>
 @include('layouts.header')
@@ -35,7 +61,7 @@
 @include('layouts.footer')
 
 <!-- Vendor JS Files -->
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+{{--<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>

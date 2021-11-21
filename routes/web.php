@@ -30,4 +30,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('getKelurahan/{id}', function ($id) {
+    $kelurahan = \App\Models\Kelurahan::orderBy('kelurahan')->where('kecamatan_id', $id)->get();
+    return response()->json($kelurahan);
+});
+
+Route::get('/cari', 'FrontendController@loadData');
+
 require __DIR__.'/auth.php';

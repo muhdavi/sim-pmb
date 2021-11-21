@@ -19,7 +19,7 @@
                             @csrf
                                 <!-- Email Address -->
                                 <div>
-                                    <x-label for="email" :value="__('Email')" />
+                                    <x-label for="email" :value="__('Username')" />
                                     <input class="form-control" type="email" name="email" :value="old('email')" required autofocus />
                                 </div>
 

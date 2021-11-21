@@ -24,25 +24,38 @@
                         <form action="/store/{{ $sekolah->id }}-{{ Str::slug($sekolah->sekolah) }}" method="post" enctype="multipart/form-data">
                             @csrf
 
-                            <h4>Data Sekolah</h4>
+                            <h4>Pilih Sekolah</h4>
                             <hr/>
+                            <h5>Pilihan I</h5>
                             <div class="form-group row">
-                                <label for="nama_sekolah" class="col-sm-2 col-form-label text-right">Nama Sekolah</label>
+                                <label for="nama_sekolah" class="col-sm-2 col-form-label text-left">Nama Sekolah</label>
                                 <div class="col-sm-10">
                                     <div class="form-control">{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="kepala_sekolah" class="col-sm-2 col-form-label text-right">Kepala Sekolah</label>
+                                <label for="kepala_sekolah" class="col-sm-2 col-form-label text-left">Kepala Sekolah</label>
                                 <div class="col-sm-10">
                                     <div class="form-control">{{ $sekolah->kepala->nama }}</div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="alamat_sekolah" class="col-sm-2 col-form-label text-right">Alamat Sekolah</label>
+                                <label for="alamat_sekolah" class="col-sm-2 col-form-label text-left">Alamat Sekolah</label>
                                 <div class="col-sm-10">
-                                    <div class="form-control">{{ $sekolah->alamat }}</div>
+                                    <div class="form-control h-auto">{{ $sekolah->alamat }}</div>
                                 </div>
+                            </div>
+
+                            <h5>Pilihan II</h5>
+                            <div class="form-group">
+                                <input class="cari form-control" type="text" name="cari" id="pilihan2" placeholder="Pilih Sekolah ke-2" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                <div class="validate"></div>
+                            </div>
+
+                            <h5>Pilihan III</h5>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="pilihan3" id="pilihan2" placeholder="Pilih Sekolah ke-3" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                <div class="validate"></div>
                             </div>
 
                             <h4>Data Orang Tua</h4>
@@ -57,9 +70,11 @@
                                     <div class="validate"></div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="pekerjaan_ayah" id="pekerjaan_ayah" placeholder="Pekerjaan Ayah" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
-                                <div class="validate"></div>
+                            <div class="form-row">
+                                <div class="col-md-12 form-group">
+                                    <input class="form-control" type="text" name="pekerjaan_ayah" id="pekerjaan_ayah" placeholder="Pekerjaan Ayah" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <div class="validate"></div>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
@@ -71,33 +86,11 @@
                                     <div class="validate"></div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-row">
+                            <div class="col-md-12 form-group">
                                 <input class="form-control" type="text" name="pekerjaan_ibu" id="pekerjaan_ibu" placeholder="Pekerjaan Ibu" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
                                 <div class="validate"></div>
                             </div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="alamat_wali" rows="2" placeholder="Alamat Orang Tua" data-rule="required" data-msg="Harus diisi"></textarea>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6 form-group">
-                                    <select class="custom-select" required>
-                                        <option value="-1">Pilih Kecamatan</option>
-                                        @foreach($kecamatans as $kecamatan)
-                                            <option value="{{ $kecamatan->id }}">{{ $kecamatan->kecamatan }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <select name="kelurahan_wali" class="custom-select" required>
-                                        <option value="-1">Pilih Desa/Gampong</option>
-                                        @foreach($kelurahans as $kelurahan)
-                                            <option value="{{ $kelurahan->id }}">{{ $kelurahan->kelurahan }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="validate"></div>
-                                </div>
                             </div>
 
                             <h4>Data Murid</h4>
@@ -126,27 +119,11 @@
 
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="sekolah_asal" id="sekolah_asal" placeholder="Sekolah Sebelumnya" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <input class="form-control" type="text" name="sekolah_asal" id="sekolah_asal" placeholder="Nama Sekolah Sebelumnya" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
                                     <div class="validate"></div>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <input class="form-control" type="text" name="nomor_hp" id="nomor_hp" placeholder="Nomor Handphone" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
-                                    <div class="validate"></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6 form-group">
-                                    <select name="agama_id" class="custom-select" required>
-                                        <option value="-1">Pilih Agama</option>
-                                        @foreach($agamas as $agama)
-                                            <option value="{{ $agama->id }}">{{ $agama->agama }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-6 form-group custom-file">
-                                    <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile">
-                                    <label class="custom-file-label" for="validatedCustomFile">Pilih Pas Foto...</label>
                                     <div class="validate"></div>
                                 </div>
                             </div>
@@ -166,30 +143,42 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <textarea class="form-control" name="alamat_murid" rows="2" placeholder="Alamat Orang Tua" data-rule="required" data-msg="Harus diisi"></textarea>
-                                <div class="validate"></div>
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <select name="agama_id" class="custom-select" required>
+                                        <option value="-1">Pilih Agama</option>
+                                        @foreach($agamas as $agama)
+                                            <option value="{{ $agama->id }}">{{ $agama->agama }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-6 form-group custom-file">
+                                    <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile">
+                                    <label class="custom-file-label" for="validatedCustomFile">Pilih Pas Foto Murid</label>
+                                    <div class="validate"></div>
+                                </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
-                                    <select class="custom-select" required>
+                                    <select id="kecamatan" class="custom-select" required>
                                         <option value="-1">Pilih Kecamatan</option>
                                         @foreach($kecamatans as $kecamatan)
-                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->kecamatan }}</option>
+                                            <option value="{{ $kecamatan->id }}">{{ $kecamatan->kecamatan }}</option>
                                         @endforeach
                                     </select>
                                     <div class="validate"></div>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <select name="kelurahan_murid" class="custom-select" required>
-                                        <option value="-1">Pilih Desa/Gampong</option>
-                                        @foreach($kelurahans as $kelurahan)
-                                            <option value="{{ $kelurahan->id }}">{{ $kelurahan->kelurahan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <select name="kelurahan" id="kelurahan" class="custom-select" required></select>
                                     <div class="validate"></div>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea class="form-control" name="alamat_murid" rows="2" placeholder="Alamat Murid" data-rule="required" data-msg="Harus diisi"></textarea>
+                                <div class="validate"></div>
                             </div>
 
                             <div class="text-center">
@@ -201,4 +190,56 @@
             </div>
         </section><!-- End Contact Section -->
     </main><!-- End #main -->
+    <script>
+        $(document).ready(function() {
+            $('#kecamatan').on('change', function() {
+                var kecamatanID = $(this).val();
+                if(kecamatanID) {
+                    $.ajax({
+                        url: '/getKelurahan/'+kecamatanID,
+                        type: "GET",
+                        data : {"_token":"{{ csrf_token() }}"},
+                        dataType: "json",
+                        success:function(data)
+                        {
+                            if(data){
+                                $('#kelurahan').empty();
+                                $('#kelurahan').append('<option value="-1">Pilih Desa/Gampong</option>');
+                                $.each(data, function(key, kelurahan){
+                                    $('select[name="kelurahan"]').append('<option value="'+ kelurahan.id +'">' + kelurahan.kelurahan+ '</option>');
+                                });
+                            }else{
+                                $('#kelurahan').empty();
+                            }
+                        }
+                    });
+                }else{
+                    $('#kelurahan').empty();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $('.cari').select2({
+            placeholder: 'Cari...',
+            ajax: {
+                url: '/cari',
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.sekolah,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+
+    </script>
 </x-guest-layout>
+

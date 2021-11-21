@@ -12,7 +12,7 @@
                 <div class="carousel-item" style="background-image: url({{ asset('assets/img/slide/slide-2.jpg') }});"></div>
 
                 <!-- Slide 3 -->
-{{--                <div class="carousel-item" style="background-image: url({{ asset('assets/img/slide/slide-1-sekolah.png') }});"></div>--}}
+                <div class="carousel-item" style="background-image: url({{ asset('assets/img/slide/slide-3.jpg') }});"></div>
 
             </div>
 

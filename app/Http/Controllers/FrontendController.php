@@ -37,7 +37,7 @@ class FrontendController extends Controller
     public function daftar(Sekolah $sekolah, $slug)
     {
         $agamas = Agama::all();
-        $kecamatans = Kecamatan::all();
+        $kecamatans = Kecamatan::orderBy('kecamatan')->get();
         $kelurahans = Kelurahan::all();
         return view('frontend.daftar', compact('sekolah', 'kecamatans', 'kelurahans', 'agamas'));
     }
@@ -81,5 +81,12 @@ class FrontendController extends Controller
         return view('frontend.success');
     }
 
-
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = DB::table('sekolahs')->select('id', 'sekolah')->where('sekolah', 'LIKE', '%$cari%')->get();
+            return response()->json($data);
+        }
+    }
 }
