@@ -7,7 +7,7 @@
     <meta name="descriptison" content="Gaza International Foundation">
     <meta name="keywords" content="gaza, bantuan">
 
-    <title>{{ config('app.name', 'SIMPMB') }} - Sistem Penerimaan Murid Baru</title>
+    <title>{{ config('app.name', 'SIMPMB') }} 1.0</title>
 
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon" type="image/png">
@@ -25,7 +25,6 @@
     <link href="{{ asset('assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
@@ -38,6 +37,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <style type="text/css">
@@ -48,8 +48,8 @@
     <script>
         $( function() {
             $( "#tanggal_lahir" ).datepicker({
-                changeMonth: false,
-                changeYear: false,
+                changeMonth: true,
+                changeYear: true,
                 dateFormat: 'yy-mm-dd',
             });
         });

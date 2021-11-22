@@ -15,14 +15,12 @@ class CreateWaliMuridsTable extends Migration
     {
         Schema::create('wali_murids', function (Blueprint $table) {
             $table->id();
-            $table->string('nik_ayah')->unique();
-            $table->string('nik_ibu')->unique();
-            $table->string('nama_ayah');
-            $table->string('nama_ibu');
-            $table->string('pekerjaan_ayah');
-            $table->string('pekerjaan_ibu');
-            $table->string('alamat');
+            $table->string('nik')->unique();
+            $table->string('nama');
+            $table->foreignId('pekerjaan_id')->constrained('pekerjaans')->onUpdate('cascade');
             $table->foreignId('kelurahan_id')->constrained('kelurahans')->onUpdate('cascade');
+            $table->enum('sebagai', ['ayah', 'ibu', 'wali'])->default('ayah');
+            $table->string('alamat');
             $table->timestamps();
         });
     }

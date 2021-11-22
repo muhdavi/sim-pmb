@@ -29,6 +29,7 @@
                             <h5>Pilihan I</h5>
                             <div class="form-group row">
                                 <label for="nama_sekolah" class="col-sm-2 col-form-label text-left">Nama Sekolah</label>
+                                <input type="hidden" value="{{ $sekolah->id }}" name="pilihan1">
                                 <div class="col-sm-10">
                                     <div class="form-control">{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</div>
                                 </div>
@@ -48,13 +49,23 @@
 
                             <h5>Pilihan II</h5>
                             <div class="form-group">
-                                <input class="cari form-control" type="text" name="cari" id="pilihan2" placeholder="Pilih Sekolah ke-2" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                <select class="sekolah form-control" name="pilihan2">
+                                    <option value="-1">Pilih sekolah kedua</option>
+                                    @foreach($sekolahs as $sekolah)
+                                        <option value="{{ $sekolah->id }}">{{ $sekolah->npsn }} - {{ $sekolah->sekolah }} - {{ $sekolah->kepala->nama }}</option>
+                                    @endforeach
+                                </select>
                                 <div class="validate"></div>
                             </div>
 
                             <h5>Pilihan III</h5>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="pilihan3" id="pilihan2" placeholder="Pilih Sekolah ke-3" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                <select class="sekolah form-control" name="pilihan3">
+                                    <option value="-1">Pilih sekolah kedua</option>
+                                    @foreach($sekolahs as $sekolah)
+                                        <option value="{{ $sekolah->id }}">{{ $sekolah->npsn }} - {{ $sekolah->sekolah }} - {{ $sekolah->kepala->nama }}</option>
+                                    @endforeach
+                                </select>
                                 <div class="validate"></div>
                             </div>
 
@@ -72,7 +83,12 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12 form-group">
-                                    <input class="form-control" type="text" name="pekerjaan_ayah" id="pekerjaan_ayah" placeholder="Pekerjaan Ayah" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <select class="pekerjaan form-control" name="pekerjaan">
+                                        <option value="-1">Pilih pekerjaan</option>
+                                        @foreach($pekerjaans as $pekerjaan)
+                                            <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
+                                        @endforeach
+                                    </select>
                                     <div class="validate"></div>
                                 </div>
                             </div>
@@ -88,7 +104,12 @@
                             </div>
                             <div class="form-row">
                             <div class="col-md-12 form-group">
-                                <input class="form-control" type="text" name="pekerjaan_ibu" id="pekerjaan_ibu" placeholder="Pekerjaan Ibu" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                <select class="pekerjaan form-control" name="pekerjaan">
+                                    <option value="-1">Pilih pekerjaan</option>
+                                    @foreach($pekerjaans as $pekerjaan)
+                                        <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
+                                    @endforeach
+                                </select>
                                 <div class="validate"></div>
                             </div>
                             </div>
@@ -97,7 +118,7 @@
                             <hr/>
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nisn" id="nisn" placeholder="Nomor Induk Siswa Nasional" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
+                                    <input class="form-control" type="text" name="nik" id="nik" placeholder="Nomor Induk Kependudukan" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
                                     <div class="validate"></div>
                                 </div>
                                 <div class="col-md-6 form-group">
@@ -118,12 +139,13 @@
                             </div>
 
                             <div class="form-row">
+
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="sekolah_asal" id="sekolah_asal" placeholder="Nama Sekolah Sebelumnya" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <input class="form-control" type="text" name="nisn" id="nisn" placeholder="Nomor Induk Siswa Nasional" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
                                     <div class="validate"></div>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nomor_hp" id="nomor_hp" placeholder="Nomor Handphone" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <input class="form-control" type="text" name="sekolah_asal" id="sekolah_asal" placeholder="Nama Sekolah Sebelumnya" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
                                     <div class="validate"></div>
                                 </div>
                             </div>
@@ -217,29 +239,9 @@
                     $('#kelurahan').empty();
                 }
             });
+            $('.sekolah').select2();
+            $('.pekerjaan').select2();
         });
-    </script>
-    <script type="text/javascript">
-        $('.cari').select2({
-            placeholder: 'Cari...',
-            ajax: {
-                url: '/cari',
-                dataType: 'json',
-                delay: 250,
-                processResults: function (data) {
-                    return {
-                        results:  $.map(data, function (item) {
-                            return {
-                                text: item.sekolah,
-                                id: item.id
-                            }
-                        })
-                    };
-                },
-                cache: true
-            }
-        });
-
     </script>
 </x-guest-layout>
 

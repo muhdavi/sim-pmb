@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__.'/auth.php';
+
 Route::middleware(['guest'])->group(function (){
     Route::name('frontend.')->group(function (){
         Route::get('/', [FrontendController::class, 'index'])->name('index');
@@ -22,6 +24,7 @@ Route::middleware(['guest'])->group(function (){
         Route::get('daftar/{sekolah}-{slug}', [FrontendController::class, 'daftar'])->name('daftar');
         Route::get('print/{murid}-{slug}', [FrontendController::class, 'daftar'])->name('daftar');
         Route::post('store/{sekolah}-{slug}', [FrontendController::class, 'store'])->name('store');
+        Route::get('print', [FrontendController::class, 'print'])->name('print');
     });
 });
 
@@ -34,7 +37,3 @@ Route::get('getKelurahan/{id}', function ($id) {
     $kelurahan = \App\Models\Kelurahan::orderBy('kelurahan')->where('kecamatan_id', $id)->get();
     return response()->json($kelurahan);
 });
-
-Route::get('/cari', 'FrontendController@loadData');
-
-require __DIR__.'/auth.php';

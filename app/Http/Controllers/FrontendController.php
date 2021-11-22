@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Agama;
+use App\Models\Sekolah;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
-use App\Models\Murid;
-use App\Models\Sekolah;
-use App\Models\WaliMurid;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -39,12 +39,14 @@ class FrontendController extends Controller
         $agamas = Agama::all();
         $kecamatans = Kecamatan::orderBy('kecamatan')->get();
         $kelurahans = Kelurahan::all();
-        return view('frontend.daftar', compact('sekolah', 'kecamatans', 'kelurahans', 'agamas'));
+        $sekolahs = Sekolah::inRandomOrder()->get();
+        $pekerjaans = Pekerjaan::orderBy('pekerjaan')->get();
+        return view('frontend.daftar', compact('sekolah', 'kecamatans', 'kelurahans', 'agamas', 'sekolahs', 'pekerjaans'));
     }
 
     public function store(Request $request, Sekolah $sekolah, $slug)
     {
-        $wali = new WaliMurid;
+        /*$wali = new WaliMurid;
         $wali->nik_ayah = $request->nik_ayah;
         $wali->nik_ibu = $request->nik_ibu;
         $wali->nama_ayah = $request->nama_ayah;
@@ -77,16 +79,18 @@ class FrontendController extends Controller
             $murid->foto = $fn_foto;
         }
 
-        $murid->save();
+        $murid->save();*/
         return view('frontend.success');
     }
 
-    public function loadData(Request $request)
+    public function print()
     {
-        if ($request->has('q')) {
-            $cari = $request->q;
-            $data = DB::table('sekolahs')->select('id', 'sekolah')->where('sekolah', 'LIKE', '%$cari%')->get();
-            return response()->json($data);
-        }
+        $path = 'assets/img/logo-simpmb.png';
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $pdf = PDF::loadview('frontend.print', ['logo' => $logo]);
+        return $pdf->stream('pendaftaran_simpmb');
     }
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>WASIAT</title>
+    <title>SIMPMB</title>
 
     <style type="text/css">
         body {
@@ -21,7 +21,7 @@
             margin-top: 5cm;
         }
         header {
-            float: right;
+            float: left;
             border: 1px solid white;
         }
         main {
@@ -133,6 +133,9 @@
         .right {
             text-align: right;
         }
+        .signature {
+            float: right;
+        }
     </style>
 </head>
 <body>
@@ -157,29 +160,74 @@
     }
 </script>
 <header>
-
+{{--    <img src="{{ $logo }}" width="150" alt="image" >--}}
 </header>
 <main>
-    <h1 class="center">LAPORAN HASIL PENGAWASAN</h1>
+    <h1 class="center">Formulir Pendaftaran SIMPMB</h1>
 
     <table class="data">
         <tr>
-            <td class="no" colspan="5">A. Identitas Koperasi</td>
+            <td class="no" colspan="5">A. Identitas Murid</td>
         </tr>
         <tr>
-            <td colspan="2" class="pd25">1. Nama Koperasi</td>
-            <td colspan="3">: ok </td>
+            <td colspan="2" class="pd25">1. NIK</td>
+            <td colspan="3">: 123456789 </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">2. NPSN</td>
+            <td colspan="3">: Rina </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">3. TTL</td>
+            <td colspan="3">: Idi, 17-08-2011 </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">4. Jenis Kelamin</td>
+            <td colspan="3">: Perempuan </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">5. Agama</td>
+            <td colspan="3">: Islam </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">6. Alamat</td>
+            <td colspan="3">: Jl Banda Aceh - Medan KM 380, Blang Seunong, Pante Bidari</td>
+        </tr>
+    </table>
+
+    <table class="data">
+        <tr>
+            <td class="no" colspan="5">B. Pendaftaran</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">Sekolah Asal</td>
+            <td colspan="3">: SDN 1 Idi Rayeuk </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">1. Pilihan I</td>
+            <td colspan="3">: SMPN 1 Pante Bidari </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">2. Pilihan II</td>
+            <td colspan="3">: SMPN 2 Pante Bidari </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">3. Pilihan III</td>
+            <td colspan="3">: SMPN 3 Pante Bidari </td>
         </tr>
     </table>
 </main>
 
 <footer>
-    <table class="center tebal">
+    <table class="signature center tebal">
         <tr>
-            <td colspan="3">Idi, {{ Date('m-d-Y') }}</td>
+            <td>Idi, {{ Date('d-m-Y') }}</td>
         </tr>
         <tr>
-            <td colspan="3">TIM PENGAWAS KOPERASI</td>
+            <td>Wali Murid</td>
+        </tr>
+        <tr>
+            <td class="ttd nama">Harun</td>
         </tr>
     </table>
 </footer>

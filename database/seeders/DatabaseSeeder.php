@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AgamaSeeder::class,
             WilayahSeeder::class,
             KoorwilSeeder::class,
+            PekerjaanSeeder::class,
             KepalaSekolahSeeder::class,
         ]);
     }

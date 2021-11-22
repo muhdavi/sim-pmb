@@ -44,20 +44,13 @@
                 <div class="row content">
                     <div class="col-lg-6" data-aos="fade-right">
                         <h2>Sistem Informasi Penerimaan Murid Baru (SIMPMB)</h2>
-                        <h3>Tempat penerimaan murid baru berdasarkan peraturan yang berlaku.</h3>
+                        <h3>Mudah, Cepat, Akurat</h3>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
                         <p>
-                            Sistem Informasi Penerimaan Murid Baru (SIMPMB) dibentuk pada 1 Oktober 2020 oleh teamwork terbaik dari dalam   dan   luar   negeri   yang   bertujuan   untuk   memberikan
-                            dukungan   pendidikan,   pelatihan pengetahuan dan potensi diri mereka serta membentuk pribadi yang memiliki akhlakul karimah dan juga berpegang teguh pada
-                            Al-Quran dan As Sunnah. Gaza Internatioal Foundation juga menjadi  yayasan yang mendukung perjuangan rakyat Palestina.
+                            Sistem Informasi Penerimaan Murid Baru (SIMPMB) merupakan aplikasi ringan yang dapat digunakan pada perangkat IT dengan spesifikasi minimal. Perubaan perilaku masyarakat perkotaan terdahap teknologi menuntut adanya pelayanan berbasis digital yang mana setiap informasi dapat diakses secara langsung melalui jaringan internet termasuk transparansi proses yang sedang dilaksanakan.
                         </p>
-                        <p>Sistem Informasi Penerimaan Murid Baru (SIMPMB) telah menjalin kerjasama dengan berbagai negara donatur seperti Turki, Palestina, Malaysia dan Indonesia, serta didukung
-                            oleh donatur publik berbasis kedermawanan yang berasal dari masyarakat indonesia yang memiliki kepedulian tinggi terhadap permasalahan pendidikan,
-                            sosial dan kemanusiaan.
-                        </p>
-                        <p>Sistem Informasi Penerimaan Murid Baru (SIMPMB) juga telah menjalin kerjasama dengan berbagai instansi pemerintahan, instansi swasta, lembaga pendidikan, universitas,
-                            sekolah serta lembaga-lembaga yang bergerak dibidang edukasi dan sosial.
+                        <p>Dengan adanya aplikasi tersebut maka wali murid dapat menyimpan dan mencetak dokumen hasil pendaftaran dalam bentuk digital secara pribadi, begitu juga dengan pihak Sekolah dan Dinas Pendidikan dan Kebudayaan akan mendapatkan file digital dan mempermudah dalam proses monitor serta evauasi proses pelaksanaannya.
                         </p>
                         {{--                        <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>--}}
                     </div>
