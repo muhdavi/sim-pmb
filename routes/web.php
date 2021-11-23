@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackendController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,23 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 require __DIR__.'/auth.php';
 
-Route::middleware(['guest'])->group(function (){
-    Route::name('frontend.')->group(function (){
-        Route::get('/', [FrontendController::class, 'index'])->name('index');
-        Route::get('tentang', [FrontendController::class, 'tentang'])->name('tentang');
-        Route::get('sekolah', [FrontendController::class, 'sekolah'])->name('sekolah');
-        Route::get('kontak', [FrontendController::class, 'kontak'])->name('kontak');
-        Route::get('daftar/{sekolah}-{slug}', [FrontendController::class, 'daftar'])->name('daftar');
-        Route::get('print/{murid}-{slug}', [FrontendController::class, 'daftar'])->name('daftar');
-        Route::post('store/{sekolah}-{slug}', [FrontendController::class, 'store'])->name('store');
-        Route::get('print', [FrontendController::class, 'print'])->name('print');
+Route::name('frontend.')->group(function (){
+    Route::get('/', [FrontendController::class, 'index'])->name('index');
+    Route::get('tentang', [FrontendController::class, 'tentang'])->name('tentang');
+    Route::get('sekolah', [FrontendController::class, 'sekolah'])->name('sekolah');
+    Route::get('kontak', [FrontendController::class, 'kontak'])->name('kontak');
+    Route::post('kontak_store', [FrontendController::class, 'kontak_store'])->name('kontak_store');
+    Route::get('daftar/{sekolah}', [FrontendController::class, 'daftar'])->name('daftar');
+    Route::get('print/{murid}', [FrontendController::class, 'print'])->name('print');
+    Route::post('store', [FrontendController::class, 'store'])->name('store');
+    Route::get('print/{murid}', [FrontendController::class, 'print'])->name('print');
+});
+
+Route::middleware(['auth'])->group(function (){
+    Route::get('/dashboard', [BackendController::class, 'index'])->name('dashboard');
+    Route::name('backend.')->group(function (){
+        Route::get('pendaftaran', [BackendController::class, 'pendaftaran'])->name('pendaftaran');
     });
 });
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::get('getKelurahan/{id}', function ($id) {
     $kelurahan = \App\Models\Kelurahan::orderBy('kelurahan')->where('kecamatan_id', $id)->get();

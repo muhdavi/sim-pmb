@@ -16,6 +16,7 @@ class CreateMuridsTable extends Migration
         Schema::create('murids', function (Blueprint $table) {
             $table->id();
             $table->string('murid');
+            $table->string('nomor_pendaftaran')->unique();
             $table->string('niss')->nullable()->unique();
             $table->string('nisn')->nullable()->unique();
             $table->string('tempat_lahir');
@@ -26,8 +27,8 @@ class CreateMuridsTable extends Migration
             $table->string('sekolah_asal')->nullable();
             $table->string('nomor_hp')->nullable();
             $table->foreignId('agama_id')->constrained('agamas')->onUpdate('cascade');
-            $table->foreignId('wali_id')->constrained('wali_murids')->onUpdate('cascade');
-            $table->foreignId('sekolah_id')->constrained('sekolahs')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade');
+            $table->foreignId('wali_id')->nullable()->constrained('wali_murids')->onUpdate('cascade');
             $table->foreignId('kelurahan_id')->constrained('kelurahans')->onUpdate('cascade');
             $table->timestamps();
         });

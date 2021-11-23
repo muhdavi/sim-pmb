@@ -1,7 +1,6 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-        {{--        <h1 class="logo mr-auto"><a href="{{ route('home') }}"><span>G</span>IF</a></h1>--}}
         <a href="{{ route('frontend.index') }}" class="logo mr-auto">
             <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
         </a>

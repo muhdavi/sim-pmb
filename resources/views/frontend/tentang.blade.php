@@ -23,11 +23,11 @@
                 <div class="row content">
                     <div class="col-lg-6" data-aos="fade-right">
                         <h2>Sistem Informasi Penerimaan Murid Baru (SIMPMB)</h2>
-                        <h3>Mudah, Cepat, Akurat</h3>
+                        <h3>SIMPLE, MUDAH, BEREH</h3>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
-                        <p>Sistem Informasi Penerimaan Murid Baru (SIMPMB) merupakan aplikasi ringan yang dapat digunakan pada perangkat IT dengan spesifikasi minimal. Perubaan perilaku masyarakat perkotaan terdahap teknologi menuntut adanya pelayanan berbasis digital yang mana setiap informasi dapat diakses secara langsung melalui jaringan internet termasuk transparansi proses yang sedang dilaksanakan.</p>
-                        <p>Dengan adanya aplikasi tersebut maka wali murid dapat menyimpan dan mencetak dokumen hasil pendaftaran dalam bentuk digital secara pribadi, begitu juga dengan pihak Sekolah dan Dinas Pendidikan dan Kebudayaan akan mendapatkan file digital dan mempermudah dalam proses monitor serta evauasi proses pelaksanaannya.</p>
+                        <p class="text-justify">Sistem Informasi Penerimaan Murid Baru (SIMPMB) merupakan aplikasi ringan yang dapat digunakan pada perangkat IT dengan spesifikasi minimal. Perubaan perilaku masyarakat perkotaan terhadap teknologi menuntut adanya pelayanan berbasis digital yang mana setiap informasi dapat diakses secara langsung melalui jaringan internet termasuk transparansi proses yang sedang dilaksanakan.</p>
+                        <p class="text-justify">Dengan adanya aplikasi tersebut maka wali murid dapat menyimpan dan mencetak dokumen hasil pendaftaran dalam bentuk digital secara pribadi, begitu juga dengan pihak Sekolah dan Dinas Pendidikan dan Kebudayaan akan mendapatkan file digital dan mempermudah dalam proses monitor serta evauasi proses pelaksanaannya.</p>
                         {{--<ul>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
                             <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>

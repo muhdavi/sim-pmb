@@ -31,7 +31,7 @@
                                 <h4>{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</h4>
                                 <p class="mx-4">{{ $sekolah->alamat }}</p>
                                 <div class="btn-wrap">
-                                    <a href="/daftar/{{ $sekolah->id }}-{{ Str::slug($sekolah->sekolah) }}" class="btn-buy">Daftar</a>
+                                    <a href="{{ route('frontend.daftar', $sekolah->id) }}" class="btn-buy">Daftar</a>
                                 </div>
                             </div>
                         </div>

@@ -21,7 +21,7 @@
                 <div class="row justify-content-center" data-aos="fade-up">
                     <div class="col-lg-10">
 
-                        <form action="/store/{{ $sekolah->id }}-{{ Str::slug($sekolah->sekolah) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('frontend.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <h4>Pilih Sekolah</h4>
@@ -29,7 +29,7 @@
                             <h5>Pilihan I</h5>
                             <div class="form-group row">
                                 <label for="nama_sekolah" class="col-sm-2 col-form-label text-left">Nama Sekolah</label>
-                                <input type="hidden" value="{{ $sekolah->id }}" name="pilihan1">
+                                <input type="hidden" value="{{ $sekolah->id }}" name="pilihan[]">
                                 <div class="col-sm-10">
                                     <div class="form-control">{{ $sekolah->sekolah }} ({{ $sekolah->npsn }})</div>
                                 </div>
@@ -49,103 +49,61 @@
 
                             <h5>Pilihan II</h5>
                             <div class="form-group">
-                                <select class="sekolah form-control" name="pilihan2">
+                                <select class="sekolah form-control" name="pilihan[]" required>
                                     <option value="-1">Pilih sekolah kedua</option>
                                     @foreach($sekolahs as $sekolah)
                                         <option value="{{ $sekolah->id }}">{{ $sekolah->npsn }} - {{ $sekolah->sekolah }} - {{ $sekolah->kepala->nama }}</option>
                                     @endforeach
                                 </select>
-                                <div class="validate"></div>
+                                @error('pilihan2')
+                                <div class="alert alert-danger mt-1" role="alert">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <h5>Pilihan III</h5>
                             <div class="form-group">
-                                <select class="sekolah form-control" name="pilihan3">
+                                <select class="sekolah form-control" name="pilihan[]" required>
                                     <option value="-1">Pilih sekolah kedua</option>
                                     @foreach($sekolahs as $sekolah)
                                         <option value="{{ $sekolah->id }}">{{ $sekolah->npsn }} - {{ $sekolah->sekolah }} - {{ $sekolah->kepala->nama }}</option>
                                     @endforeach
                                 </select>
-                                <div class="validate"></div>
-                            </div>
-
-                            <h4>Data Orang Tua</h4>
-                            <hr/>
-                            <div class="form-row">
-                                <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nik_ayah" id="nik_ayah" placeholder="NIK Ayah" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nama_ayah" id="nama_ayah" placeholder="Nama Ayah" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
-                                    <div class="validate"></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12 form-group">
-                                    <select class="pekerjaan form-control" name="pekerjaan">
-                                        <option value="-1">Pilih pekerjaan</option>
-                                        @foreach($pekerjaans as $pekerjaan)
-                                            <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="validate"></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nik_ibu" id="nik_ibu" placeholder="NIK Ibu" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nama_ibu" id="nama_ibu" placeholder="Nama Ibu" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
-                                    <div class="validate"></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                            <div class="col-md-12 form-group">
-                                <select class="pekerjaan form-control" name="pekerjaan">
-                                    <option value="-1">Pilih pekerjaan</option>
-                                    @foreach($pekerjaans as $pekerjaan)
-                                        <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="validate"></div>
-                            </div>
+                                @error('pilihan3')
+                                <div class="alert alert-danger mt-1" role="alert">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <h4>Data Murid</h4>
                             <hr/>
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nik" id="nik" placeholder="Nomor Induk Kependudukan" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
+                                    <input class="form-control" type="text" name="nik" id="nik" required placeholder="Nomor Induk Kependudukan" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
                                     <div class="validate"></div>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="murid" id="murid" placeholder="Nama Murid" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <input class="form-control" type="text" name="murid" id="murid" required placeholder="Nama Murid" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir" required placeholder="Tempat Lahir" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input class="form-control" type="text" name="tanggal_lahir" id="tanggal_lahir" required placeholder="Tanggal Lahir" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
                                     <div class="validate"></div>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
+                                    <input class="form-control" type="text" name="nisn" id="nisn" required placeholder="Nomor Induk Siswa Nasional" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
                                     <div class="validate"></div>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal Lahir" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
-                                    <div class="validate"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-
-                                <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="nisn" id="nisn" placeholder="Nomor Induk Siswa Nasional" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input class="form-control" type="text" name="sekolah_asal" id="sekolah_asal" placeholder="Nama Sekolah Sebelumnya" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <input class="form-control" type="text" name="sekolah_asal" id="sekolah_asal" required placeholder="Nama Sekolah Sebelumnya" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
                                     <div class="validate"></div>
                                 </div>
                             </div>
@@ -154,11 +112,11 @@
                                 <div class="col-md-12 form-group">
                                     <label for="jenis_kelamin" class="col-sm-2 col-form-label text-left">Jenis Kelamin</label>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="jk_lakilaki" value="1" name="jenis_kelamin" class="custom-control-input">
+                                        <input type="radio" id="jk_lakilaki" value="1" name="jenis_kelamin"required class="custom-control-input">
                                         <label class="custom-control-label" for="jk_lakilaki">Laki-laki</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="jk_perempuan" value="0" name="jenis_kelamin" class="custom-control-input">
+                                        <input type="radio" id="jk_perempuan" value="0" name="jenis_kelamin" required class="custom-control-input">
                                         <label class="custom-control-label" for="jk_perempuan">Perempuan</label>
                                     </div>
                                     <div class="validate"></div>
@@ -173,11 +131,13 @@
                                             <option value="{{ $agama->id }}">{{ $agama->agama }}</option>
                                         @endforeach
                                     </select>
-                                    <div class="validate"></div>
+                                    @error('agama_id')
+                                    <div class="alert alert-danger mt-1" role="alert">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 form-group custom-file">
-                                    <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile">
-                                    <label class="custom-file-label" for="validatedCustomFile">Pilih Pas Foto Murid</label>
+                                    <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile" required>
+                                    <label class="custom-file-label" for="validatedCustomFile">Pilih Pas Foto Murid...</label>
                                     <div class="validate"></div>
                                 </div>
                             </div>
@@ -190,17 +150,35 @@
                                             <option value="{{ $kecamatan->id }}">{{ $kecamatan->kecamatan }}</option>
                                         @endforeach
                                     </select>
-                                    <div class="validate"></div>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <select name="kelurahan" id="kelurahan" class="custom-select" required></select>
-                                    <div class="validate"></div>
+                                    <select name="kelurahan" id="kelurahan" class="custom-select" name="kelurahan" required></select>
+                                    @error('kelurahan')
+                                    <div class="alert alert-danger mt-1" role="alert">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <textarea class="form-control" name="alamat_murid" rows="2" placeholder="Alamat Murid" data-rule="required" data-msg="Harus diisi"></textarea>
+                                <textarea class="form-control" name="alamat" rows="2" required placeholder="Alamat Murid" data-rule="required" data-msg="Harus diisi"></textarea>
                                 <div class="validate"></div>
+                            </div>
+
+                            <h4>Data Wali</h4>
+                            <hr/>
+                            <div class="form-row">
+                                <div class="col-md-4 form-group">
+                                    <input class="form-control" type="text" name="nama" id="nama" required placeholder="Nama" data-rule="minlen:16" data-msg="Minimal isian 16 karakter" />
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input class="form-control" type="email" name="email" id="email" required placeholder="Email" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input class="form-control" type="password" name="password" id="password" required placeholder="Password" data-rule="minlen:4" data-msg="Minimal isian 4 karakter" />
+                                    <div class="validate"></div>
+                                </div>
                             </div>
 
                             <div class="text-center">

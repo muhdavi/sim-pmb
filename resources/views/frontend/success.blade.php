@@ -20,13 +20,10 @@
             <div class="container">
                 <div class="row justify-content-center" data-aos="fade-up">
                     <div class="col-lg-10">
-
                         <div class="alert alert-success" role="alert">
-                            Pendaftaran Berhasil
-                        </div>
-
+                            Pendaftaran Berhasil, dengan nomor pendaftaran <span class="alert-link">{{ $murid->nomor_pendaftaran }}</span> atas nama <span class="alert-link">{{ $murid->murid }}</span>.</div>
                         <div class="text-center">
-                            <button onclick="window.open('{{ route('frontend.print') }}', '_blank')" title="Print Formulir SIMPMB">
+                            <button class="btn-success" onclick="window.open('{{ route('frontend.print', $murid->id) }}', '_blank')" title="Print Formulir SIMPMB">
                                 <div class="w-4 mx-2 transform hover:text-purple-500 hover:scale-110">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <rect x="0" y="0" width="24" height="24" stroke="none"></rect>

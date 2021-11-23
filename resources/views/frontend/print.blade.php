@@ -13,19 +13,17 @@
             line-height: 1.5;
         }
         @page {
-            margin: 2cm 2cm 4cm 3cm;
+            margin: .5cm 2cm 4cm 2cm;
             /*size: 33cm 21.5cm ;*/
         }
 
-        @page :first {
-            margin-top: 5cm;
-        }
         header {
             float: left;
             border: 1px solid white;
+            clear: both;
         }
         main {
-            clear: right;
+            clear: both;
             float: none;
             border: 1px solid white;
             margin: 25px 0;
@@ -102,6 +100,12 @@
             font-size: 14pt;
             font-weight: bolder;
         }
+        .kop {
+            font-size: 14pt;
+            float: left;
+            font-weight: bolder;
+            padding-left: 175px;
+        }
         .tebal {
             font-weight: bolder;
         }
@@ -136,6 +140,9 @@
         .signature {
             float: right;
         }
+        .nomor_pendaftaran {
+            margin-top: -10px;
+        }
     </style>
 </head>
 <body>
@@ -160,38 +167,54 @@
     }
 </script>
 <header>
-{{--    <img src="{{ $logo }}" width="150" alt="image" >--}}
+    <img src="{{ $logo }}" width="150" alt="image" >
+    <div class="kop">
+        <h1 class="center">SIMPMB</h1>
+        <h1>(SISTEM INFORMASI PENERIMAAN MURID BARU)</h1>
+        <h1 class="center">KABUPATEN ACEH TIMUR</h1>
+    </div>
 </header>
 <main>
-    <h1 class="center">Formulir Pendaftaran SIMPMB</h1>
+    <h1 class="center nama">Formulir Pendaftaran</h1>
+    <p class="center nomor_pendaftaran">Nomor: {{ $murid->nomor_pendaftaran }}</p>
 
     <table class="data">
         <tr>
             <td class="no" colspan="5">A. Identitas Murid</td>
         </tr>
         <tr>
-            <td colspan="2" class="pd25">1. NIK</td>
-            <td colspan="3">: 123456789 </td>
+            <td colspan="2" class="pd25">1. NISN</td>
+            <td colspan="3">: {{ $murid->nisn }} </td>
         </tr>
         <tr>
-            <td colspan="2" class="pd25">2. NPSN</td>
-            <td colspan="3">: Rina </td>
+            <td colspan="2" class="pd25">2. Nama</td>
+            <td colspan="3">: {{ $murid->murid }} </td>
         </tr>
         <tr>
             <td colspan="2" class="pd25">3. TTL</td>
-            <td colspan="3">: Idi, 17-08-2011 </td>
+            <td colspan="3">: {{ $murid->tempat_lahir }}, {{ Date('d-m-Y', strtotime($murid->tanggal_lahir)) }} </td>
         </tr>
         <tr>
             <td colspan="2" class="pd25">4. Jenis Kelamin</td>
-            <td colspan="3">: Perempuan </td>
+            <td colspan="3">:
+                @if($murid->jenis_kelamin == 1)
+                    {{ __('Laki-laki') }}
+                @else
+                    {{ __('Perempuan') }}
+                @endif
+            </td>
         </tr>
         <tr>
             <td colspan="2" class="pd25">5. Agama</td>
-            <td colspan="3">: Islam </td>
+            <td colspan="3">: {{ $murid->agamas->agama }} </td>
         </tr>
         <tr>
             <td colspan="2" class="pd25">6. Alamat</td>
-            <td colspan="3">: Jl Banda Aceh - Medan KM 380, Blang Seunong, Pante Bidari</td>
+            <td colspan="3">: {{ $murid->alamat }} {{ $murid->kelurahans->kelurahan }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="pd25">7. Sekolah Asal</td>
+            <td colspan="3">: {{ $murid->sekolah_asal }} </td>
         </tr>
     </table>
 
@@ -199,22 +222,12 @@
         <tr>
             <td class="no" colspan="5">B. Pendaftaran</td>
         </tr>
+        @foreach($murid->sekolahs as $key => $ms)
         <tr>
-            <td colspan="2" class="pd25">Sekolah Asal</td>
-            <td colspan="3">: SDN 1 Idi Rayeuk </td>
+            <td colspan="2" class="pd25">Pilihan {{ $key+1 }}</td>
+            <td colspan="3">: {{ $ms->sekolah }} </td>
         </tr>
-        <tr>
-            <td colspan="2" class="pd25">1. Pilihan I</td>
-            <td colspan="3">: SMPN 1 Pante Bidari </td>
-        </tr>
-        <tr>
-            <td colspan="2" class="pd25">2. Pilihan II</td>
-            <td colspan="3">: SMPN 2 Pante Bidari </td>
-        </tr>
-        <tr>
-            <td colspan="2" class="pd25">3. Pilihan III</td>
-            <td colspan="3">: SMPN 3 Pante Bidari </td>
-        </tr>
+        @endforeach
     </table>
 </main>
 
@@ -227,7 +240,7 @@
             <td>Wali Murid</td>
         </tr>
         <tr>
-            <td class="ttd nama">Harun</td>
+            <td class="ttd nama">{{ $murid->users->name }}</td>
         </tr>
     </table>
 </footer>

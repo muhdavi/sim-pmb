@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kontak;
+use App\Models\Murid;
+use App\Models\MuridSekolah;
+use App\Models\User;
+use App\Models\WaliMurid;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use PDF;
 use App\Models\Agama;
 use App\Models\Sekolah;
@@ -34,63 +43,109 @@ class FrontendController extends Controller
         return view('frontend.kontak');
     }
 
-    public function daftar(Sekolah $sekolah, $slug)
+    public function kontak_store(Request $request)
+    {
+        $kontak = new Kontak;
+        $kontak->nama = $request->nama;
+        $kontak->email = $request->email;
+        $kontak->judul = $request->judul;
+        $kontak->pesan = $request->pesan;
+
+        $kontak->save();
+
+        return redirect()->route('frontend.kontak')->with('message', 'Berhasil dikirim, Balasan akan kami kirim melalui email!');
+    }
+
+    public function daftar(Sekolah $sekolah)
     {
         $agamas = Agama::all();
         $kecamatans = Kecamatan::orderBy('kecamatan')->get();
-        $kelurahans = Kelurahan::all();
-        $sekolahs = Sekolah::inRandomOrder()->get();
+        $kelurahans = Kelurahan::orderBy('kelurahan')->get();
         $pekerjaans = Pekerjaan::orderBy('pekerjaan')->get();
+        $sekolahs = Sekolah::inRandomOrder()->get();
         return view('frontend.daftar', compact('sekolah', 'kecamatans', 'kelurahans', 'agamas', 'sekolahs', 'pekerjaans'));
     }
 
-    public function store(Request $request, Sekolah $sekolah, $slug)
+    public function store(Request $request, Sekolah $sekolah)
     {
-        /*$wali = new WaliMurid;
-        $wali->nik_ayah = $request->nik_ayah;
-        $wali->nik_ibu = $request->nik_ibu;
-        $wali->nama_ayah = $request->nama_ayah;
-        $wali->nama_ibu = $request->nama_ibu;
-        $wali->pekerjaan_ayah = $request->pekerjaan_ibu;
-        $wali->pekerjaan_ibu = $request->pekerjaan_ibu;
-        $wali->alamat = $request->alamat_wali;
-        $wali->kelurahan_id = $request->kelurahan_wali;
-        $wali->save();
+        $data = $request->all();
+        $rules = [
+            'pilihan[]' => 'not_in:-1',
+            'agama' => 'not_in:-1',
+        ];
+        $messages = [
+            'not_in' => ':attribute harus dipilih...!',
+        ];
+        $customAttributes = [
+            'agama_id' => 'Agama',
+            'pilihan2' => 'Pilihan II',
+            'pilihan3' => 'Pilihan III',
+        ];
+        $validator = Validator::make($data, $rules, $messages, $customAttributes);
 
-        $wali_id = WaliMurid::where('nik_ayah', $wali->nik_ayah)->first();
+        if ($validator->fails())
+        {
+            return redirect()->route('frontend.daftar', $sekolah->id)->withErrors($validator)->withInput();
+        } else {
+            $user = new User;
+            $user->name = $request->nama;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
 
-        $murid = new Murid;
-        $murid->murid = $request->murid;
-        $murid->nisn = $request->nisn;
-        $murid->tempat_lahir = $request->tempat_lahir;
-        $murid->tanggal_lahir = $request->tanggal_lahir;
-        $murid->jenis_kelamin = $request->jenis_kelamin;
-        $murid->alamat = $request->alamat_murid;
-        $murid->sekolah_asal = $request->sekolah_asal;
-        $murid->agama_id = $request->agama_id;
-        $murid->wali_id = $wali_id->id;
-        $murid->sekolah_id = $sekolah->id;
-        $murid->kelurahan_id = $request->kelurahan_murid;
+            $user->save();
 
-        if ($request->hasFile("foto")) {
-            $foto = $request->foto;
-            $fn_foto = $murid->murid . "_" . time() . "." . $foto->getClientOriginalExtension();
-            $foto->move(public_path('foto'), $fn_foto);
-            $murid->foto = $fn_foto;
+            $user_id = User::where('id', $user->id)->first();
+
+            $murid = new Murid;
+            $murid->murid = $request->murid;
+            $murid->nisn = $request->nisn;
+            $murid->tempat_lahir = $request->tempat_lahir;
+            $murid->tanggal_lahir = $request->tanggal_lahir;
+            $murid->jenis_kelamin = $request->jenis_kelamin;
+            $murid->alamat = $request->alamat;
+            $murid->sekolah_asal = $request->sekolah_asal;
+            $murid->agama_id = $request->agama_id;
+            $murid->user_id = $user_id->id;
+            $murid->kelurahan_id = $request->kelurahan;
+
+            if ($request->hasFile("foto")) {
+                $foto = $request->foto;
+                $fn_foto = $murid->murid . "_" . time() . "." . $foto->getClientOriginalExtension();
+                $foto->move(public_path('foto'), $fn_foto);
+                $murid->foto = $fn_foto;
+            }
+            $murid->save();
+
+            try {
+                $sekolah_id = $request->pilihan;
+                for ($i = 0; $i < count($sekolah_id); $i++) {
+                    $murid_sekolah = new MuridSekolah;
+                    $murid_sekolah->sekolah_id = $sekolah_id[$i];
+                    $murid_sekolah->murid_id = $murid->id;
+                    $murid_sekolah->pilihan = $i + 1;
+                    $murid_sekolah->tahun = Date('Y');
+                    $murid_sekolah->save();
+                }
+                return view('frontend.success', ['murid' => $murid]);
+            } catch (QueryException $e) {
+                $errorCode = $e->errorInfo[1];
+                if ($errorCode == '1062') {
+                    return redirect()->route('frontend.daftar', $sekolah->id)->withErrors();
+                } else {
+                    return redirect()->route('frontend.daftar', $sekolah->id)->withErrors();
+                }
+            }
         }
-
-        $murid->save();*/
-        return view('frontend.success');
     }
 
-    public function print()
+    public function print(Murid $murid)
     {
-        $path = 'assets/img/logo-simpmb.png';
+        $path = 'assets/img/logo-simpmb-hijau.png';
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        $pdf = PDF::loadview('frontend.print', ['logo' => $logo]);
-        return $pdf->stream('pendaftaran_simpmb');
+        $pdf = PDF::loadview('frontend.print', ['logo' => $logo, 'murid' => $murid]);
+        return $pdf->stream($murid->name . 'pendaftaran_simpmb');
     }
 }

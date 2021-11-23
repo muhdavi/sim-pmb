@@ -13,4 +13,9 @@ class Sekolah extends Model
     {
         return $this->belongsTo(Kepala::class);
     }
+
+    public function murids()
+    {
+        return $this->belongsToMany(Murid::class);
+    }
 }

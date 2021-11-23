@@ -4,15 +4,13 @@
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
-
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Kontak</h2>
                     <ol>
-                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="{{ route('frontend.index') }}">Beranda</a></li>
                         <li>Kontak</li>
                     </ol>
                 </div>
-
             </div>
         </section><!-- End Breadcrumbs -->
 
@@ -49,33 +47,52 @@
                     </div>
                 </div>
 
+                @if (session()->has('message'))
+                    <div class="mt-3 row justify-content-center" data-aos="fade-up">
+                        <div class="col-lg-10 ">
+                            <div class="info-wrap alert alert-success">
+                                <div class="row">
+                                    {{ session('message') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 <div class="row mt-5 justify-content-center" data-aos="fade-up">
                     <div class="col-lg-10">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form action="{{ route('frontend.kontak_store') }}" method="post" role="form">
+                            @csrf
+
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                    <div class="validate"></div>
+                                    <input type="text" required name="nama" class="form-control" id="name" placeholder="Nama" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    @error('nama')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
-                                    <div class="validate"></div>
+                                    <input type="email" required class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
+                                    @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Judul" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                                <div class="validate"></div>
+                                <input type="text" required class="form-control" name="judul" id="judul" placeholder="Judul" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                @error('judul')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Isi pesan..."></textarea>
-                                <div class="validate"></div>
+                                <textarea class="form-control" required name="pesan" rows="5" data-rule="required" data-msg="Pesan..." placeholder="Isi pesan..."></textarea>
+                                @error('pesan')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="mb-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-lg btn-success">Kirim</button>
                             </div>
-                            <div class="text-center"><button type="submit">Kirim</button></div>
                         </form>
                     </div>
                 </div>
