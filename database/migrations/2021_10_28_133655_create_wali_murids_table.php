@@ -17,7 +17,7 @@ class CreateWaliMuridsTable extends Migration
             $table->id();
             $table->string('nik')->unique();
             $table->string('nama');
-            $table->foreignId('pekerjaan_id')->constrained('pekerjaans')->onUpdate('cascade');
+            $table->foreignId('pekerjaan_id')->constrained('pekerjaans')->onDelete('cascade');
             $table->enum('sebagai', ['ayah', 'ibu', 'wali'])->default('ayah');
             $table->string('alamat');
             $table->timestamps();

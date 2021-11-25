@@ -26,10 +26,10 @@ class CreateMuridsTable extends Migration
             $table->string('foto')->nullable();
             $table->string('sekolah_asal')->nullable();
             $table->string('nomor_hp')->nullable();
-            $table->foreignId('agama_id')->constrained('agamas')->onUpdate('cascade');
-            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade');
-            $table->foreignId('wali_id')->nullable()->constrained('wali_murids')->onUpdate('cascade');
-            $table->foreignId('kelurahan_id')->constrained('kelurahans')->onUpdate('cascade');
+            $table->foreignId('agama_id')->constrained('agamas')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('wali_id')->nullable()->constrained('wali_murids')->onDelete('cascade');
+            $table->foreignId('kelurahan_id')->constrained('kelurahans')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -20,9 +20,9 @@ class CreateSekolahsTable extends Migration
             $table->string('sekolah');
             $table->string('alamat');
             $table->enum('akreditasi', ['A', 'B', 'C', 'TT'])->default('TT');
-            $table->foreignId('kepala_id')->constrained('kepalas')->onUpdate('cascade');
-            $table->foreignId('kelurahan_id')->nullable()->constrained('kelurahans')->onUpdate('cascade');
-            $table->foreignId('koordinator_wilayah_id')->constrained('koordinator_wilayahs')->onUpdate('cascade');
+            $table->foreignId('kepala_id')->constrained('kepalas')->onDelete('cascade');
+            $table->foreignId('kelurahan_id')->nullable()->constrained('kelurahans')->onDelete('cascade');
+            $table->foreignId('koordinator_wilayah_id')->constrained('koordinator_wilayahs')->onDelete('cascade');
             $table->timestamps();
         });
     }

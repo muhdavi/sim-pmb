@@ -31,6 +31,8 @@ Route::name('frontend.')->group(function (){
 Route::middleware(['auth'])->group(function (){
     Route::get('/dashboard', [BackendController::class, 'index'])->name('dashboard');
     Route::name('backend.')->group(function (){
+        Route::get('profil', [BackendController::class, 'profil'])->name('profil');
+        Route::get('kelulusan', [BackendController::class, 'kelulusan'])->name('kelulusan');
         Route::get('pendaftaran', [BackendController::class, 'pendaftaran'])->name('pendaftaran');
     });
 });

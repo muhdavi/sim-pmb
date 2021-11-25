@@ -18,7 +18,7 @@ class CreateKepalasTable extends Migration
             $table->string('nip')->nullable();
             $table->string('nama');
             $table->string('nomor_hp');
-            $table->foreignId('gpr_id')->nullable()->constrained('gprs')->onUpdate('cascade');
+            $table->foreignId('gpr_id')->nullable()->constrained('gprs')->onDelete('cascade');
             $table->timestamps();
         });
     }

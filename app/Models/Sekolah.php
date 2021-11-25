@@ -16,6 +16,9 @@ class Sekolah extends Model
 
     public function murids()
     {
-        return $this->belongsToMany(Murid::class);
+        return $this->belongsToMany(Murid::class)
+            ->withPivot(['sekolah_id', 'murid_id', 'tahun', 'pilihan', 'status'])
+            ->orderBy('pivot_pilihan')
+            ->withTimestamps();;
     }
 }

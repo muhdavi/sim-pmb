@@ -50,6 +50,7 @@
             $( "#tanggal_lahir" ).datepicker({
                 changeMonth: true,
                 changeYear: true,
+                yearRange: '2000:2015',
                 dateFormat: 'yy-mm-dd',
             });
         });

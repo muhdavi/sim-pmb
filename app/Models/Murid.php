@@ -30,7 +30,7 @@ class Murid extends Model
     public function sekolahs()
     {
         return $this->belongsToMany(Sekolah::class)
-            ->withPivot(['sekolah_id', 'murid_id', 'tahun', 'pilihan'])
+            ->withPivot(['sekolah_id', 'murid_id', 'tahun', 'pilihan', 'status'])
             ->orderBy('pivot_pilihan')
             ->withTimestamps();
     }

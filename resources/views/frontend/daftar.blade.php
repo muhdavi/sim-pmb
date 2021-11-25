@@ -26,7 +26,7 @@
 
                             <h4>Pilih Sekolah</h4>
                             <hr/>
-                            <h5>Pilihan I</h5>
+                            <h5>Pilihan 1</h5>
                             <div class="form-group row">
                                 <label for="nama_sekolah" class="col-sm-2 col-form-label text-left">Nama Sekolah</label>
                                 <input type="hidden" value="{{ $sekolah->id }}" name="pilihan[]">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
 
-                            <h5>Pilihan II</h5>
+                            <h5>Pilihan 2</h5>
                             <div class="form-group">
                                 <select class="sekolah form-control" name="pilihan[]" required>
                                     <option value="-1">Pilih sekolah kedua</option>
@@ -60,7 +60,7 @@
                                 @enderror
                             </div>
 
-                            <h5>Pilihan III</h5>
+                            <h5>Pilihan 3</h5>
                             <div class="form-group">
                                 <select class="sekolah form-control" name="pilihan[]" required>
                                     <option value="-1">Pilih sekolah kedua</option>
