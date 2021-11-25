@@ -20,8 +20,8 @@
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">No. Daftar</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">NISN</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Nama Lengkap</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">TTL</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Sekolah Asal</th>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Status</th>
                                 <th class="px-4 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Updated</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300"></th>
                             </tr>
@@ -40,26 +40,8 @@
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                                     <div class="text-sm leading-5 text-blue-900">{{ ucwords($murid->murid) }}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{ $murid->sekolah_asal }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                                    @if($murid->status == 1)
-                                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">aktif</span>
-                                    </span>
-                                    @elseif($murid->status == 0)
-                                    <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">not active</span>
-                                    </span>
-                                    @else
-                                    <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                                        <span aria-hidden class="absolute inset-0 bg-yellow-300 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs">belum</span>
-                                    </span>
-                                    @endif
-                                </td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{ $murid->tempat_lahir }}, {{ Date('d-m-Y', strtotime($murid->tanggal_lahir)) }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{ $murid->sekolah_asal }}</td>
                                 <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">{{ Date('d-m-Y', strtotime($murid->created_at)) }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
                                     <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Lihat Details</button>

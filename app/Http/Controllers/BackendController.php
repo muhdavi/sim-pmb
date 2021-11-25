@@ -34,11 +34,16 @@ class BackendController extends Controller
 
     public function profil()
     {
-        $sekolah = Sekolah::findOrFail(Auth::user()->sekolah_id);
-        $user = User::findOrFail(Auth::user()->id);
-        $kelurahans = Kelurahan::all();
-        $kecamatans = Kecamatan::all();
-        $koorwils = KoordinatorWilayah::all();
-        return view('backend.profil', compact('user', 'sekolah', 'kelurahans', 'kecamatans', 'koorwils'));
+        if (auth()->user()->as == 'wali') {
+            $user = User::findOrFail(Auth::user()->id);
+            return view('backend.profil', compact('user'));
+        } else {
+            $user = User::findOrFail(Auth::user()->id);
+            $sekolah = Sekolah::findOrFail(Auth::user()->sekolah_id);
+            $kelurahans = Kelurahan::all();
+            $kecamatans = Kecamatan::all();
+            $koorwils = KoordinatorWilayah::all();
+            return view('backend.profil', compact('user', 'sekolah', 'kelurahans', 'kecamatans', 'koorwils'));
+        }
     }
 }

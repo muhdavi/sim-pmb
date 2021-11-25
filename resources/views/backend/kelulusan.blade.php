@@ -54,14 +54,14 @@
                                             <span class="relative text-xs">diterima</span>
                                         </span>
                                         @elseif($ms->murids->first()->pivot->status == 0)
+                                            <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
+                                            <span aria-hidden class="absolute inset-0 bg-yellow-300 opacity-50 rounded-full"></span>
+                                            <span class="relative text-xs">verifikasi</span>
+                                        </span>
+                                        @else
                                         <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
                                             <span aria-hidden class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
                                             <span class="relative text-xs">ditolak</span>
-                                        </span>
-                                        @else
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                                            <span aria-hidden class="absolute inset-0 bg-yellow-300 opacity-50 rounded-full"></span>
-                                            <span class="relative text-xs">verifikasi</span>
                                         </span>
                                         @endif
                                     </td>

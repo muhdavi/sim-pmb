@@ -62,7 +62,6 @@ class KepalaSekolahSeeder extends Seeder
         $user->as = 'sekolah';
         $user->save();
 
-
         $kepala = new Kepala;
         $kepala->nip = '198302032007011002';
         $kepala->nama = 'ISLAHUDDIN, S.Pd.I';
