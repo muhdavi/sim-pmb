@@ -473,7 +473,7 @@ class WilayahSeeder extends Seeder
             ['id' => 1103162010, 'kecamatan_id' => 110316, 'kelurahan' => 'Paya Dua'],
             ['id' => 1103162009, 'kecamatan_id' => 110316, 'kelurahan' => 'Gampong Kuala'],
             ['id' => 1103162007, 'kecamatan_id' => 110316, 'kelurahan' => 'Alue Ie Itam'],
-            ['id' => 110316, 'kecamatan_id' => 110316, 'kelurahan' => 'Matang Rayeuk'],
+            ['id' => 1103162005, 'kecamatan_id' => 110316, 'kelurahan' => 'Matang Rayeuk'],
 //            peureulak timur
             ['id' => 1103172004, 'kecamatan_id' => 110317, 'kelurahan' => 'Buket Meriam'],
             ['id' => 1103172009, 'kecamatan_id' => 110317, 'kelurahan' => 'Seuneubok Punti'],
@@ -535,7 +535,7 @@ class WilayahSeeder extends Seeder
             ['id' => 1103202003, 'kecamatan_id' => 110320, 'kelurahan' => 'Pante Kera'],
             ['id' => 1103202004, 'kecamatan_id' => 110320, 'kelurahan' => 'Rantau Panjang'],
 //            darul ihsan
-            ['id' => 110321, 'kecamatan_id' => 110321, 'kelurahan' => 'Seuneubok Aceh Baro'],
+            ['id' => 1103212009, 'kecamatan_id' => 110321, 'kelurahan' => 'Seuneubok Aceh Baro'],
             ['id' => 1103212012, 'kecamatan_id' => 110321, 'kelurahan' => 'Lhok Leumak'],
             ['id' => 1103212015, 'kecamatan_id' => 110321, 'kelurahan' => 'Seuneubok Teungoh'],
             ['id' => 1103212003, 'kecamatan_id' => 110321, 'kelurahan' => 'Meunasah Aroen'],

@@ -145,7 +145,12 @@ class FrontendController extends Controller
         $data = file_get_contents($path);
         $logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        $pdf = PDF::loadview('frontend.print', ['logo' => $logo, 'murid' => $murid]);
+        $path_foto = 'foto/' . $murid->foto;
+        $type_foto = pathinfo($path_foto, PATHINFO_EXTENSION);
+        $data_foto = file_get_contents($path_foto);
+        $foto = 'data:image/' . $type_foto . ';base64,' . base64_encode($data_foto);
+
+        $pdf = PDF::loadview('frontend.print', ['logo' => $logo, 'foto' => $foto, 'murid' => $murid]);
         return $pdf->stream($murid->name . 'pendaftaran_simpmb');
     }
 }

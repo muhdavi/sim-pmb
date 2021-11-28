@@ -177,6 +177,7 @@
 <main>
     <h1 class="center nama">Formulir Pendaftaran</h1>
     <p class="center nomor_pendaftaran">Nomor: {{ $murid->nomor_pendaftaran }}</p>
+    <p class="center"><img src="{{ $foto }}" width="150" alt="image" ></p>
 
     <table class="data">
         <tr>
